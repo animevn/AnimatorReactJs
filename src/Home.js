@@ -24,6 +24,10 @@ function Home() {
           setStyle("flip-left-last");
           setAnimStyle("");
           break;
+        case "flip-right":
+          setStyle("flip-right-last");
+          setAnimStyle("");
+          break;
       }
     }else {
       setStyle("");
@@ -48,6 +52,12 @@ function Home() {
     setStyle("flip-left-first")
   }
 
+  function flipRight() {
+    setOnAnim(!onAnim);
+    setAnimStyle("flip-right");
+    setStyle("flip-right-first")
+  }
+
   return (
     <div className="container mt-5 ">
       <div className="container d-flex overflow-hidden p-5 perspective">
@@ -60,7 +70,7 @@ function Home() {
 
         <div className="container mt-5">
           <div className="row d-flex justify-content-around">
-            <button className="btn btn-outline-success" onClick={handleRotate} >
+            <button className="btn btn-outline-success" onClick={handleRotate}>
               Rotate
             </button>
 
@@ -76,7 +86,7 @@ function Home() {
               Fade
             </button>
 
-            <button className="btn btn-outline-success" >
+            <button className="btn btn-outline-success" onClick={flipRight}>
               Flip Right
             </button>
           </div>
