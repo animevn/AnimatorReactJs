@@ -11,6 +11,7 @@ function Home() {
     if (onAnim){
       setOnAnim(!onAnim);
       setCardState(old=>!old);
+      // eslint-disable-next-line
       switch (animStyle) {
         case "rotate":
           setStyle("rotate-anim-last");
