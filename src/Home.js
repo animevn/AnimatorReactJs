@@ -1,7 +1,12 @@
 import React, {useState} from "react";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+
 import "./Home.css";
 
 function Home() {
+  const width = {xs:10, sm:8, md:6, lg:4, xl:4};
   const card = {front:"/images/image.png", back:"/images/back.png"};
   const [style, setStyle] = useState("");
   const [onAnim, setOnAnim] = useState(false);
@@ -61,42 +66,45 @@ function Home() {
   }
 
   return (
-    <div className="container mt-5 ">
-      <div className="container d-flex overflow-hidden p-5 perspective">
-        <img className={"col-xl-3 col-lg-4 col-md-5 col-sm-6 col-6 mx-auto " + style}
-             src={cardState? card.front : card.back}  onAnimationEnd={handleAnimEnd} alt="rleft">
-        </img>
-      </div>
+    <Grid container direction="column" justify="center" alignItems="center">
+      <Grid item {...width}>
+        <Box display="flex" flexDirection="row" justifyContent="center" py={5}
+             style={{"perspective":"1000px"}}>
+          <img className={style} style={{"width":"50%"}}
+               src={cardState? card.front : card.back}  onAnimationEnd={handleAnimEnd} alt="rleft">
+          </img>
+        </Box>
 
-      <div className="container col-xl-5 col-lg-6 col-md-8 col-sm-10 col-10">
+        <Box display="flex" flexDirection="column" justifyContent="space-around" py={5} my={5}>
 
-        <div className="container mt-5">
-          <div className="row d-flex justify-content-around">
-            <button className="btn btn-outline-success" onClick={handleRotate}>
+          <Box display="flex" flexDirection="row" justifyContent="space-around" pb={3}>
+            <Button variant="contained" color="primary" style={{"width":"9rem"}}
+                    onClick={handleRotate}>
               Rotate
-            </button>
+            </Button>
 
-            <button className="btn btn-outline-success" onClick={flipLeft}>
+            <Button variant="contained" color="primary" style={{"width":"9rem"}}
+                    onClick={flipLeft}>
               Flip Left
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Box>
 
-        <div className="container mt-5">
-          <div className="row d-flex justify-content-around">
-            <button className="btn btn-outline-success" onClick={handleFade}>
+          <Box display="flex" flexDirection="row" justifyContent="space-around" pb={3}>
+            <Button variant="contained" color="primary" style={{"width":"9rem"}}
+                    onClick={handleFade}>
               Fade
-            </button>
+            </Button>
 
-            <button className="btn btn-outline-success" onClick={flipRight}>
+            <Button variant="contained" color="primary" style={{"width":"9rem"}}
+                    onClick={flipRight}>
               Flip Right
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Box>
 
-      </div>
+        </Box>
 
-    </div>
+      </Grid>
+    </Grid>
   )
 }
 
